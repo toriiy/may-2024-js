@@ -1,6 +1,6 @@
 let time = +prompt('Напишіть число від 0 до 59');
 
-if (time <= 15) {
+if (time > 0 && time <= 15) {
     console.log('Перша чверть години');
 } else if (time > 15 && time <= 30) {
     console.log('Друга чверть години');
