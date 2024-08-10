@@ -5,6 +5,6 @@ for (let i = 0; i < array.length; i++) {
     const word = array[i];
     document.write(`
     <div>
-    <p>${word} - ${[i]}</p>
+    <p>${word} - ${i}</p>
     </div> `);
 }
