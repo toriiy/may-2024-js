@@ -13,7 +13,7 @@ console.log(arrayString);
 let arrayAny = [5, false, 'rain', -999, true];
 console.log(arrayAny);
 
-console.log('')
+console.log('');
 
 // -- Створити пустий масив. Наповнити його будь-якими значеннями звертаючись до конкретного індексу. Вивести в консоль
 
