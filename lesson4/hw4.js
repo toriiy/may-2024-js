@@ -46,8 +46,7 @@ console.log('');
 
 function printTagP(text) {
     document.write(`
-    <p>${text}</p>
-    `)
+    <p>${text}</p> `);
 }
 
 printTagP('hello');
@@ -61,8 +60,7 @@ function printList(listItem) {
         <li>${listItem}</li>
         <li>${listItem}</li>
         <li>${listItem}</li>
-    </ul>
-    `)
+    </ul> `);
 }
 
 printList('item');
@@ -72,7 +70,7 @@ printList('item');
 function printList2(liText, numOfLi) {
     document.write(`<ul>`);
     for (let i = 0; i < numOfLi; i++) {
-        document.write(`<li>${liText}</li>`)
+        document.write(`<li>${liText}</li>`);
     }
     document.write(`</ul>`);
 }
@@ -82,11 +80,11 @@ printList2('work', 7);
 // - створити функцію яка приймає масив примітивних елементів (числа,стрінги,булеві), та будує для них список (ul li) та виводить його через document.write
 
 function listOfArray(array) {
-    document.write(`<ul>`)
+    document.write(`<ul>`);
     for (const item of array) {
-        document.write(`<li>${item}</li>`)
+        document.write(`<li>${item}</li>`);
     }
-    document.write(`</ul>`)
+    document.write(`</ul>`);
 }
 
 let arrayAny1 = [-348, true, 'sun', false, 0, 56, 'flower'];
@@ -101,7 +99,7 @@ function arrayOfUsers(array) {
         <p>Id - ${array[i].id}</p>
         <p>Name - ${array[i].name}</p>
         <p>Age- ${array[i].age}</p>
-        </div> `)
+        </div> `);
     }
 }
 
@@ -146,7 +144,7 @@ function theSmallestNumOfArray(array) {
     let theSmallestNum = array[0];
     for (let i = 1; i < array.length; i++) {
         if (array[i] < theSmallestNum) {
-            theSmallestNum = array[i]
+            theSmallestNum = array[i];
         }
     }
     return theSmallestNum;
@@ -173,3 +171,39 @@ console.log('');
 
 // - створити функцію swap(arr,index1,index2). Функція міняє місцями заняення у відповідних індексах
 // Приклад  swap([11,22,33,44],0,1) //=> [22,11,33,44]
+
+function swap(arr, index1, index2) {
+    if (index1 < arr.length && index2 < arr.length) {
+        let index1Space = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = index1Space;
+        return arr;
+    } else {
+        return 'index is bigger than arr.length';
+    }
+}
+
+let arrayNum3 = [23, 68, -347, 0, 23.4, -38, 49];
+console.log(swap(arrayNum3, 2, 6));
+console.log(swap(arrayNum3, 4, 8));
+console.log('');
+
+// - Написати функцію обміну валюти exchange(sumUAH,currencyValues,exchangeCurrency)
+// Приклад exchange(10000,[{currency:'USD',value:25},{currency:'EUR',value:42}],'USD') // => 400
+
+function exchange(sumUAH, currencyValues, exchangeCurrency) {
+    for (let i = 0; i < currencyValues.length; i++) {
+        if (exchangeCurrency === currencyValues[i].currency) {
+            return sumUAH / currencyValues[i].value;
+        }
+    }
+}
+
+let arrayExchange = [
+    {currency: 'USD', value: 41},
+    {currency: 'EUR', value: 44},
+    {currency: 'PLN', value: 10},
+    {currency: 'GBP', value: 52},
+    {currency: 'CAD', value: 29}];
+console.log(exchange(5000, arrayExchange, 'EUR'));
+console.log(exchange(17000, arrayExchange, 'PLN'));
