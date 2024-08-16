@@ -162,3 +162,40 @@ console.log('');
 
 // - створити функцію swap(arr,index1,index2). Функція міняє місцями заняення у відаовідних індексах
 // Приклад  swap([11,22,33,44],0,1) //=> [22,11,33,44]
+
+let swap = (arr, index1, index2) => {
+    if (index1 < arr.length && index2 < arr.length) {
+        let index1Place = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = index1Place;
+        return arr;
+    } else {
+        return 'index value is bigger than array.length';
+    }
+}
+
+let numbers3 = [2, 48, 3.45, 0, -37, 586, -364, 69, 15];
+console.log(swap(numbers3, 3, 7));
+console.log(swap(numbers3, 5, 10));
+console.log('');
+
+// - Написати функцію обміну валюти exchange(sumUAH,currencyValues,exchangeCurrency)
+// Приклад exchange(10000,[{currency:'USD',value:40},{currency:'EUR',value:42}],'USD') // => 250
+
+let exchange = (sumUAH, currencyValues, exchangeCurrency) => {
+    for (let i = 0; i < currencyValues.length; i++) {
+        if (exchangeCurrency === currencyValues[i].currency) {
+            return sumUAH / currencyValues[i].value;
+        }
+    }
+}
+
+let arrayExchange = [
+    {currency: 'USD', value: 41},
+    {currency: 'EUR', value: 44},
+    {currency: 'PLN', value: 10},
+    {currency: 'GBP', value: 52},
+    {currency: 'CAD', value: 29}];
+
+console.log(exchange(10000, arrayExchange, 'GBP'));
+console.log(exchange(4000, arrayExchange, 'CAD'));
