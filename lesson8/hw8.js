@@ -20,7 +20,7 @@ let user = {
         age: 26
     },
     // greeting(){
-    //     console.log(`hi, my name is ${this.name}`);
+    //     console.log(`hi, my name is ${user.name}`);
     // }
 };
 
@@ -32,5 +32,7 @@ console.log(deepCopyUser.husband === user.husband);
 console.log(deepCopy(undefined));
 console.log(deepCopy(null));
 console.log(deepCopy(NaN));
+
+
 
 
