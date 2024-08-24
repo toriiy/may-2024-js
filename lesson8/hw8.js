@@ -4,8 +4,20 @@
 
 function deepCopy(object) {
     if (object !== undefined && object !== null && object) {
-        let stringObject = JSON.stringify(object);
-        return JSON.parse(stringObject);
+        let arrFunc = [];
+        for (const fieldName in object) {
+            if (typeof object[fieldName] === 'function') {
+                let funcClone = object[fieldName].bind();
+                arrFunc.push({funcClone, fieldName});
+            }
+        }
+        console.log(arrFunc);
+        let JsonObject = JSON.stringify(object);
+        let parsedJsonObj = JSON.parse(JsonObject);
+        for (let i = 0; i < arrFunc.length; i++) {
+            parsedJsonObj[arrFunc[i].fieldName] = arrFunc[i].funcClone;
+        }
+        return parsedJsonObj;
     } else {
         return 'incorrect value';
     }
@@ -19,9 +31,12 @@ let user = {
         name: 'yuriy',
         age: 26
     },
-    // greeting(){
-    //     console.log(`hi, my name is ${user.name}`);
-    // }
+    greeting(name) {
+        console.log(`hello ${name}, nice to meet you`);
+    },
+    pet(petName) {
+        console.log(`I have a pet called ${petName}`);
+    }
 };
 
 let deepCopyUser = deepCopy(user);
@@ -33,6 +48,33 @@ console.log(deepCopy(undefined));
 console.log(deepCopy(null));
 console.log(deepCopy(NaN));
 
+deepCopyUser.greeting('olga');
+deepCopyUser.pet('lili');
+
+console.log('');
+
+// - є масив
+// let coursesAndDurationArray = [
+//     {title: 'JavaScript Complex', monthDuration: 5},
+//     {title: 'Java Complex', monthDuration: 6},
+//     {title: 'Python Complex', monthDuration: 6},
+//     {title: 'QA Complex', monthDuration: 4},
+//     {title: 'FullStack', monthDuration: 7},
+//     {title: 'Frontend', monthDuration: 4}
+// ];
+// за допомоги map перетворити кожен елемент на наступний тип {id,title,monthDuration
+//     Зробити все ВИКЛЮЧНО за допомоги інлайн конструкції
 
 
+let coursesAndDurationArray = [
+    {title: 'JavaScript Complex', monthDuration: 5},
+    {title: 'Java Complex', monthDuration: 6},
+    {title: 'Python Complex', monthDuration: 6},
+    {title: 'QA Complex', monthDuration: 4},
+    {title: 'FullStack', monthDuration: 7},
+    {title: 'Frontend', monthDuration: 4}
+];
 
+let coursesArrayWithId = coursesAndDurationArray.map((course, index) => ({id: index + 1, ...course}));
+console.log(coursesArrayWithId);
+console.log(coursesArrayWithId === coursesAndDurationArray);
