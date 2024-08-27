@@ -104,3 +104,18 @@ for (const course of coursesArray) {
 
 // створити три блоки з різним текстовим контентом. зробити так, щоб всі блоки мали висоту найбільшого з них.
 
+let divCollection = document.getElementsByClassName('width');
+console.log(divCollection);
+
+let theBiggestHeight = 0;
+for (const div of divCollection) {
+    if (div.offsetHeight > theBiggestHeight) {
+        theBiggestHeight = div.offsetHeight;
+    }
+}
+for (const div of divCollection) {
+    div.style.height = theBiggestHeight + 'px';
+}
+
+
+
