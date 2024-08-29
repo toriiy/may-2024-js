@@ -10,16 +10,63 @@
             background-color: silver;
             margin-bottom: 10px;
         }
+
+        #btn-1 {
+            margin-bottom: 15px;
+        }
+
+        .f1 {
+            margin-top: 25px;
+        }
+
+        .f1 > input {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .f1 > input:nth-of-type(3) {
+            margin-bottom: 10px;
+        }
+
+        .block1 {
+            height: 150px;
+            width: 150px;
+            background-color: whitesmoke;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        #div2 {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: darkseagreen;
+            margin: 15px 0 15px 0;
+        }
     </style>
 </head>
 <body>
 <div id="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis.</div>
 <button id="btn-1">click on me</button>
 
-<form name="f1">
-    <input type="number" name="age" placeholder="age">
+<br>
+<input type="number" name="age" placeholder="age">
+<button id="btn-2">send</button>
+
+<form name="f1" class="f1">
+    <input type="text" name="name" placeholder="name" required>
+    <input type="text" name="surname" placeholder="surname" required>
+    <input type="number" name="age2" placeholder="age" required>
     <button>send</button>
 </form>
+
+<div id="div2"></div>
+
+<input type="number" name="convertor" placeholder="mass in kg">
 
 <script src="hw10.js"></script>
 </body>

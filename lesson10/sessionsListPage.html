@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sessions list page</title>
+</head>
+<body>
+
+<script>
+    let parsedSessionArray = JSON.parse(localStorage.getItem('sessionsList'));
+    console.log(parsedSessionArray)
+
+    let block = document.createElement('div');
+    document.body.appendChild(block);
+
+    let h2 = document.createElement('h2');
+    h2.innerText = 'Session list:';
+    block.appendChild(h2);
+
+    for (let i = 0; i < parsedSessionArray.length; i++) {
+        let p1 = document.createElement('p');
+        p1.innerText = `Date: ${parsedSessionArray[i].date} ${parsedSessionArray[i].month} ${parsedSessionArray[i].year}`;
+
+        let p2 = document.createElement('p');
+        p2.innerText = `Time: ${parsedSessionArray[i].time}`
+        block.append(p1, p2);
+    }
+
+
+</script>
+</body>
+</html>
