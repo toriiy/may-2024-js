@@ -69,11 +69,53 @@ convertor.oninput = function () {
 // сигнатура функції -
 // addToLocalStorage(arrayName:string,objToAdd:any{}):void
 
+let users = [{name: 'oleg', age: 24}];
+
+localStorage.setItem('users', JSON.stringify(users));
+
 function addToLocalStorage(arrayName, objToAdd) {
-    let array = JSON.parse(localStorage.getItem(arrayName)) || [];
-    array.push(objToAdd);
-    localStorage.setItem(arrayName, JSON.stringify(array));
+    let array = localStorage.getItem(arrayName);
+    if (array) {
+        let parsedArray = JSON.parse(array);
+        if (typeof objToAdd === 'object' && !Array.isArray(objToAdd)) {
+            parsedArray.push(objToAdd);
+        }
+        localStorage.setItem(arrayName, JSON.stringify(parsedArray));
+    } else {
+        console.log('this array does not exist');
+    }
 }
 
-addToLocalStorage('users', {name: 'oleg', age: 25});
 addToLocalStorage('users', {name: 'anna', age: 23});
+addToLocalStorage('clientChecks', [234, 87, 556]);
+addToLocalStorage('users', [456, 34, 98]);
+
+// Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.
+// При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
+
+let btn3 = document.getElementById('btn-3');
+let inputRow = document.getElementById('row');
+let inputColumn = document.getElementById('column');
+let inputText = document.getElementById('inner-text');
+
+btn3.onclick = function () {
+    let table = document.createElement('table');
+    table.classList.add('table');
+    document.body.appendChild(table);
+
+    for (let i = 0; i < inputRow.value; i++) {
+        let tr = document.createElement('tr');
+        table.appendChild(tr);
+
+        for (let i = 0; i < inputColumn.value; i++) {
+            let td = document.createElement('td');
+            td.innerText = inputText.value;
+            td.classList.add('td');
+            tr.appendChild(td);
+        }
+    }
+}
+
+
+
+
