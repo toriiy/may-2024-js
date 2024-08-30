@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 11.1</title>
+    <style>
+        #main-container {
+            height: 100vh;
+            width: 80vw;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(25, 1fr);
+            grid-gap: 25px;
+        }
+
+        .block {
+            border: 1px solid black;
+            background-color: whitesmoke;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+<div id="main-container"></div>
+<script src="hw11.js"></script>
+</body>
+</html>
