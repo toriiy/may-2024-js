@@ -1,8 +1,6 @@
 // - взяти https://dummyjson.com/docs/carts та вивести інформацію про всі корзини. Відобразити всі поля кожної корзини.
 
 let div1 = document.getElementById('main-container');
-document.body.appendChild(div1);
-
 
 fetch('https://dummyjson.com/carts?limit=50')
     .then(res => res.json())
@@ -63,5 +61,5 @@ fetch('https://dummyjson.com/carts?limit=50')
 
             div2.append(heading, heading2, heading3, heading4, heading5);
         }
-    })
+    });
 
