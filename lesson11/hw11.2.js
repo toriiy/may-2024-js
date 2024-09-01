@@ -1,6 +1,6 @@
 // - взяти https://dummyjson.com/docs/recipes та вивести інформацію про всі рецепти. Інгредієнти повинні бути список під час відображення.
 
-let div1 = document.getElementById('main block');
+let div1 = document.getElementById('main-block');
 
 fetch('https://dummyjson.com/recipes?limit=50')
     .then(res => res.json())
@@ -17,14 +17,19 @@ fetch('https://dummyjson.com/recipes?limit=50')
             let h2 = document.createElement('h2');
             h2.innerText = `id: ${recipe.id}`;
 
+
             let title = document.createElement('h2');
             title.innerText = recipe.name;
 
+            let img = document.createElement('img');
+            img.src = recipe.image;
+            img.classList.add('img');
+
             let h3 = document.createElement('h3');
-            h3.innerText = 'Ingredients:'
+            h3.innerText = 'Ingredients:';
 
             let ul = document.createElement('ul');
-            div2.append(h2, title, h3, ul);
+            div2.append(h2, title, img, h3, ul);
 
             let {ingredients} = recipe;
 
@@ -36,21 +41,23 @@ fetch('https://dummyjson.com/recipes?limit=50')
 
             let heading = document.createElement('h3');
             heading.innerText = 'Instructions';
-            div2.appendChild(heading);
+
+            let ol = document.createElement('ol');
+            div2.append(heading, ol);
 
             let {instructions} = recipe;
 
             for (const instruction of instructions) {
-                let p = document.createElement('p');
-                p.innerText = instruction;
-                div2.appendChild(p);
+                let li = document.createElement('li');
+                li.innerText = instruction;
+                ol.appendChild(li);
             }
 
             let p2 = document.createElement('p');
             p2.innerText = `Preparation time - ${recipe.prepTimeMinutes} minutes`;
 
             let p3 = document.createElement('p');
-            p3.innerText = `Cook time ${recipe.cookTimeMinutes} minutes`;
+            p3.innerText = `Cook time - ${recipe.cookTimeMinutes} minutes`;
 
             let p4 = document.createElement('p');
             p4.innerText = `Servings: ${recipe.servings}`;
@@ -75,6 +82,28 @@ fetch('https://dummyjson.com/recipes?limit=50')
                 let p = document.createElement('p');
                 p.innerText = tag;
                 div2.appendChild(p);
+            }
+
+            let heading2 = document.createElement('h4');
+            heading2.innerText = `User id: ${recipe.userId}`;
+
+            let heading3 = document.createElement('h4');
+            heading3.innerText = `Rating: ${recipe.rating}`;
+
+            let heading4 = document.createElement('h4');
+            heading4.innerText = `Review count - ${recipe.reviewCount} reviews`;
+
+            let heading5 = document.createElement('h4');
+            heading5.innerText = 'Type of meal:';
+
+            div2.append(heading2, heading3, heading4, heading5);
+
+            let {mealType} = recipe;
+
+            for (const type of mealType) {
+                let h4 = document.createElement('h4');
+                h4.innerText = type;
+                div2.appendChild(h4);
             }
         }
     });
